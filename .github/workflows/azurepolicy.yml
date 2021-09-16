@@ -1,5 +1,10 @@
-name: Compliance-Check
-on: push
+# This is a basic workflow to help you get started with Actions
+
+name: Azure Policy Compliance Check
+
+on: 
+
+ workflow_dispatch:
 
 jobs:
   assess-policy-compliance:    
@@ -15,4 +20,5 @@ jobs:
       uses: azure/policy-compliance-scan@v0
       with:
         scopes: |
-          /subscriptions/33a54cdd-4719-421e-b20f-582606580277/resourceGroups/tailspin-demo/providers/Microsoft.Web/sites/spacewebgh-webapp
+          /subscriptions/${{secrets.AZURESUBID}}/resourceGroups/Playground
+        
